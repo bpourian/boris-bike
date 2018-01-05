@@ -21,8 +21,7 @@ describe DockingStation do
   it "does the bike dock successfully" do
     test_bike = Bike.new
     subject.dock(test_bike)
-    # expect(subject.bikes).to include([test_bike])
-
+    expect(subject.bikes).to include(test_bike)
   end
 
   it "returns a stored bike" do
@@ -35,9 +34,9 @@ describe DockingStation do
     expect {subject.release_bike}.to raise_error 'NO BIKE AVAILABLE'
   end
 
-  # it "raises an error if dock is full" do
-  #   subject.dock(Bike.new)
-  #   expect{subject.dock(Bike.new)}.to raise_error 'DOCK IS FULL'
-  # end
+  it "raises an error if dock is full" do
+    subject.dock(Bike.new)
+    expect{20.times {subject.dock(Bike.new)}}.to raise_error 'DOCK IS FULL'
+  end
 
 end
